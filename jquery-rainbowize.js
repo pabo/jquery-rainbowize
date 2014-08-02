@@ -1,11 +1,13 @@
-// This rainbowize function is based on http://rainbowcoding.com/how-to-create-rainbow-text-in-html-css-javascript/
+/* This rainbowize function is based on http://rainbowcoding.com/how-to-create-rainbow-text-in-html-css-javascript/
 
-// brett.schellenberg@gmail.com
-// customizations made:
-//  - made callable on complex HTML nodes; all descendant nodes that are pure text will be found and rainbowized
-//  - randomized starting location on color wheel instead of always starting at red
-//  - added derainbowize()
-//
+ * brett.schellenberg@gmail.com
+ * customizations made:
+ *  - made callable on complex HTML nodes; all descendant nodes that are pure text will be found and rainbowized
+ *  - randomized starting location on color wheel instead of always starting at red
+ *  - added derainbowize()
+ *
+ * See live example here: http://jsfiddle.net/pabo/GYZ7F/
+ */
 
 (function( $ ) {
 	$.fn.rainbowize = function() {
