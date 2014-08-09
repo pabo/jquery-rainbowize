@@ -10,6 +10,7 @@
  */
 
 (function( $ ) {
+	'use strict';
 	$.fn.rainbowize = function() {
 		//rainbowize helpers
 		function color_from_hue(hue) {
@@ -19,12 +20,12 @@
 			var color;
 
 			var i = Math.floor(h);
-			if (i == 0) color = rgb_to_hex(c, x, 0);
-			else if (i == 1) color = rgb_to_hex(x, c, 0);
-			else if (i == 2) color = rgb_to_hex(0, c, x);
-			else if (i == 3) color = rgb_to_hex(0, x, c);
-			else if (i == 4) color = rgb_to_hex(x, 0, c);
-			else color = rgb_to_hex(c, 0, x);
+			if (i === 0) { color = rgb_to_hex(c, x, 0); }
+			else if (i === 1) { color = rgb_to_hex(x, c, 0); }
+			else if (i === 2) { color = rgb_to_hex(0, c, x); }
+			else if (i === 3) { color = rgb_to_hex(0, x, c); }
+			else if (i === 4) { color = rgb_to_hex(x, 0, c); }
+			else { color = rgb_to_hex(c, 0, x); }
 
 			return color;
 		}
@@ -32,19 +33,19 @@
 		function rgb_to_hex(red, green, blue) {
 			var h = ((red << 16) | (green << 8) | (blue)).toString(16);
 			// add the beginning zeros
-			while (h.length < 6) h = '0' + h;
+			while (h.length < 6) { h = '0' + h; }
 			return '#' + h;
 		}
 
 		// text nodes in the DOM wouldn't be able to accept styling, so convert those to element nodes (spans)
 		$(this).contents().filter(function() {
-			return this.nodeType == Node.TEXT_NODE && ! this.nodeValue.match(/^\s*$/);
+			return this.nodeType === Node.TEXT_NODE && ! this.nodeValue.match(/^\s*$/);
 		}).wrap('<span class="rainbowizedTextNode"></span>');
 
 
 		// do the rainbowizing
 		return $(this).each(function() {
-			if (this.nodeType == Node.ELEMENT_NODE && $(this).contents().length == 1) {
+			if (this.nodeType === Node.ELEMENT_NODE && $(this).contents().length === 1) {
 
 				var rainbowtext = '';
 				var hue=Math.floor((Math.random() * 360) + 1); //random starting color
